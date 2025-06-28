@@ -82,3 +82,34 @@ Bu proje, `gemma-2b` gibi büyük dil modellerinin, doğru prompt mühendisliği
 **Olası İyileştirmeler:**
 1.  **Fine-Tuning:** Modeli, (başlık, açıklama) çiftlerinden oluşan daha büyük bir veri setiyle eğitmek (fine-tuning), modelin tutarlılığını artırabilir ve halüsinasyonları önemli ölçüde azaltabilir.
 2.  **Daha Büyük Modeller:** `gemma-7b` gibi daha büyük parametreli modeller kullanarak daha tutarlı ve yaratıcı sonuçlar elde edilebilir.
+
+---
+
+### **Üretken Model Çıktıları Analizi ve Karşılaştırma Raporu**
+
+#### **Kategori 1: Yüksek Başarımlı ve Tutarlı Çıktılar**
+
+Bu kategorideki örnekler, modelin kendisine verilen görevi başarıyla yerine getirdiğini göstermektedir. Model, ürün başlığındaki anahtar kelimeleri, markayı ve ürün özelliklerini doğru bir şekilde ayrıştırarak bunları akıcı ve ikna edici bir pazarlama metnine dönüştürmüştür.
+
+*   **Örnek 2 (PS2 Güç Adaptörü) ve Örnek 8 (Nintendo Switch Bataryası):** Bu teknik ürünlerde model, model numaraları (`HAC-003`), kapasite (`4400mAh`) gibi spesifik detayları metne doğru bir şekilde entegre etmiştir. Ayrıca, başlıkta yer almayan ancak ürünle ilgili olan "dahili sigorta" veya "orijinal bataryadan daha uzun ömür" gibi değer katan faydaları da ekleyerek metni zenginleştirmiştir. Bu, modelin bağlamsal çıkarım yeteneğinin yüksek olduğunu göstermektedir.
+
+*   **Örnek 5 (Bebek Partisi Oyunu) ve Örnek 9 (Bebek Partisi Kuşağı):** Bu örneklerde model, ürünün temasını (sirk, orman) ve içeriğini (50 bilet, kuşak) anlayarak hedef kitleye yönelik sıcak ve davetkar bir dil kullanmıştır. Çıktılar, ticari amaçla doğrudan kullanılabilecek kalitededir.
+
+*   **Değerlendirme:** İncelenen 10 örneğin 7'si (%70) bu kategoriye girmektedir. Bu, "one-shot" tekniğinin, net ve anlaşılır başlıklarda yüksek bir başarı oranına sahip olduğunu kanıtlamaktadır.
+
+#### **Kategori 2: Model Hataları ve Tutarsızlıklar (Halüsinasyon)**
+
+Bu kategorideki çıktılar, modelin girdi ile olan bağını tamamen veya kısmen kaybettiği durumları içermektedir. Bu hatalar iki alt tipte gözlemlenmiştir:
+
+*   **Tamamen Bağlamsız Halüsinasyon:** Modelin, girdi olarak verilen ürün başlığıyla hiçbir ilgisi olmayan içerikler üretmesidir.
+    *   **Örnek 1 (Oyun Kumandası):** Girdi bir "Dreamcast oyun kumandası" iken, çıktı bir "dijital pazarlama rehberi" hakkındadır. İki konu arasında hiçbir mantıksal bağ bulunmamaktadır.
+    *   **Örnek 4 (Klavye Tuş Takımı):** Çok sayıda teknik detay içeren klavye tuş takımı başlığına karşılık, model bir "spor ayakkabı" açıklaması üretmiştir. Bu, girdinin karmaşıklığının modeli yanlış yönlendirebileceğinin bir göstergesidir.
+
+*   **Bağlamsal Hata:** Modelin, ürünün genel kategorisini doğru anlamasına rağmen detaylarda hatalı bilgi üretmesidir.
+    *   **Örnek 7 (Zelda Ocarina of Time 3D):** Model, ürünün bir "Zelda" oyunu olduğunu doğru tespit etmiştir. Ancak açıklamanın içine, bu serinin farklı bir oyununa (*Breath of the Wild*) ait olan "Sheikah Slate" mekaniğini dahil etmiştir. Bu durum, modelin konularla ilgili genel bilgiye sahip olduğunu ancak spesifik gerçekleri karıştırabildiğini göstermektedir.
+
+**Sonuç**
+
+`google/gemma-2b` modeli, "one-shot" yönlendirme ile dahi e-ticaret metinleri üretme konusunda kayda değer bir potansiyel sergilemektedir. Sistemin başarı oranı %70 olarak ölçülmüş olup, başarılı çıktılar ticari kullanıma uygun niteliktedir.
+
+Bununla birlikte, %30'luk bir oranda gözlemlenen ve tamamen alakasız içerik üretimiyle sonuçlanan **halüsinasyon sorunu**, sistemin mevcut haliyle denetimsiz bir şekilde kullanılmasının önündeki en büyük engeldir. Özellikle karmaşık veya çok fazla teknik terim içeren başlıklarda modelin hata yapma eğilimi artmaktadır.
