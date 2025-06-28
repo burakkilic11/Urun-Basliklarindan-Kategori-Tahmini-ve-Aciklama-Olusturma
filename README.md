@@ -1,3 +1,5 @@
+Kullanılan dataset: https://www.kaggle.com/datasets/asaniczka/amazon-products-dataset-2023-1-4m-products
+
 # 1- Ürün Başlığından Otomatik Açıklama Üretimi
 
 Bu proje, e-ticaret sitelerinde yer alan ürün başlıklarını kullanarak, bu ürünler için otomatik, yaratıcı ve pazarlama odaklı açıklamalar oluşturmayı amaçlamaktadır. Projede, Hugging Face platformu üzerinden erişilen `google/gemma-2b` modeli, "One-Shot Learning" tekniği ile kullanılmıştır.
